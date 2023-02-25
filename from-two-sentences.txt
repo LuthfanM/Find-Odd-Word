@@ -1,0 +1,27 @@
+/* find word that only appear once in both of string */
+
+const arr1 = "code community is the greatest best";
+const arr2 = "coding community is the greatest";
+
+function findOddWord(arr1, arr2) {
+  const sentences = [...[arr1], ...[arr2]];
+  const wordCount = {};
+    let res = []
+  sentences.forEach((sentence) => {
+    const words = sentence.split(" ");
+    words.forEach((word) => {
+      wordCount[word] = (wordCount[word] || 0) + 1;
+    });
+  });
+
+  for (const [word, count] of Object.entries(wordCount)) {
+    if (count % 2 === 1) {
+      res.push(""+word);
+    }
+  }
+
+  return res;
+}
+
+console.log(findOddWord(arr1, arr2));//code, coding, best
+
